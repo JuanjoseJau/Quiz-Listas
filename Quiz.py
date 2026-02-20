@@ -4,6 +4,7 @@ class Nodo:
 		self.dataN = Nombre
 		self.dataH = Habitacion
 		self.siguiente = None
+
 class ListaSE:
 	def __init__(self):
 		self.cabeza = None
@@ -12,6 +13,7 @@ class ListaSE:
 			print("Está vacia")
 		else:
 			print("Lista no vacia")
+
 	def AgregarInicio(self, Cedula, Nombre, Habitacion):
 		nuevo_nodo = Nodo(Cedula, Nombre, Habitacion)
 		if self.cabeza is None:
@@ -20,6 +22,7 @@ class ListaSE:
 		else:
 			nuevo_nodo.siguiente = self.cabeza
 			self.cabeza = nuevo_nodo
+
 	def AgregarFinal(self, Cedula, Nombre, Habitacion):
 		nuevo_nodo = Nodo(Cedula, Nombre, Habitacion)
 		if self.cabeza is None:
@@ -30,6 +33,7 @@ class ListaSE:
 			while actual.siguiente is not None:
 				actual = actual.siguiente
 			actual.siguiente = nuevo_nodo
+
 	def AgregarAntes(self, ValorX, Cedula, Nombre, Habitacion):
 		nuevo_nodo = Nodo(Cedula, Nombre, Habitacion)
 		if self.cabeza is None:
@@ -50,6 +54,7 @@ class ListaSE:
 		else:
 			nuevo_nodo.siguiente = actual
 			prev.siguiente = nuevo_nodo
+
 	def AgregarDespues(self, ValorX, Cedula, Nombre, Habitacion):
 		nuevo_nodo = Nodo(Cedula, Nombre, Habitacion)
 		if self.cabeza is None:
@@ -64,12 +69,14 @@ class ListaSE:
 		else:
 			nuevo_nodo.siguiente = actual.siguiente
 			actual.siguiente = nuevo_nodo
+
 	def EliminarInicio(self):
 		if self.cabeza is None:
 			print("Lista Vacia")
 			return
 		else:
 			self.cabeza = self.cabeza.siguiente
+
 	def EliminarFinal(self):
 		if self.cabeza is None:
 			print("Lista Vacia")
@@ -81,6 +88,7 @@ class ListaSE:
 				prev = actual
 				actual = actual.siguiente
 			prev.siguiente = None
+
 	def BuscarCedula(self, Cedula):
 		ValorEsta = False
 		actual = self.cabeza
@@ -90,6 +98,7 @@ class ListaSE:
 				break
 			actual = actual.siguiente
 		return ValorEsta
+
 	def BuscarNombre(self, Nombre):
 		ValorEsta = False
 		actual = self.cabeza
@@ -99,6 +108,7 @@ class ListaSE:
 				break
 			actual = actual.siguiente
 		return ValorEsta
+
 	def BuscarHabitacion(self, Habitacion):
 		ValorEsta = False
 		actual = self.cabeza
@@ -108,6 +118,7 @@ class ListaSE:
 				break
 			actual = actual.siguiente
 		return ValorEsta
+		
 	def ContarElementos(self):
 		contador = 0
 		actual = self.cabeza
@@ -115,11 +126,13 @@ class ListaSE:
 			contador += 1
 			actual = actual.siguiente
 		return contador
+
 	def Escribir_Lista(self):
 		actual = self.cabeza
 		while actual is not None:
 			print(f"Cedula: {actual.dataC}/Nombre: {actual.dataN}/Habitacion: {actual.dataH}")
 			actual = actual.siguiente
+
 	def Añadir_Reserva(self):
 		C=int(input("Ingrese el numero de cedula: "))
 		N=input("Ingrese el nombre: ")
@@ -131,9 +144,11 @@ class ListaSE:
 				print("La habitacion ya esta ocupada.")
 		self.AgregarFinal(C,N,H)
 		E.AgregarFinal(C,N,H)
+
 R=ListaSE()
 E=ListaSE()
 S=ListaSE()
+
 while True:
 	print("---MENU---")
 	print("1. Agregar Reserva.")
